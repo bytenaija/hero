@@ -11,10 +11,24 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/',  function () {
     return view('welcome');
 });
 
-Route::get('admin/register', 'AdminController@register_admin');
+Route::get('contact', function () {
+    return view('contact');
+});
 
-Route::post('admin/register', 'AdminController@post_register_admin');
+Route::post('contact', ['as' => 'contact.post', 'uses'=> 'ContactController@postContact']);
+
+Route::resource('admin', 'AdminController', ['names' => ['create' => 'admin.register'], 'parameters' => [
+    'admin' => 'admin_user'
+]]);
+
+//Route::get('admin/create', 'AdminController@create');
+
+//Route::post('admin/register', 'AdminController@post_register_admin');
+
+Route::get('auth/login', ['as' => 'login', 'uses'=> 'Auth\LoginController@getLogin']);
+Route::post('auth/login', 'Auth\LoginController@postLogin');
+Route::get('auth/logout', ['as' => 'logout', 'uses'=> 'Auth\LoginController@getLogout']);

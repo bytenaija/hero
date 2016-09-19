@@ -14,13 +14,14 @@ class AdminUser extends Migration
     public function up()
     {
         //
-        Schema::create("admin_user", function(Blueprint $table){
-            $table->increments('admin_id');
+        Schema::create("admin_users", function(Blueprint $table){
+            $table->increments('id');
             $table-> string('Firstname');
             $table-> string('Lastname');
             $table-> string('email')->unique();
             $table-> string('password', 60);
             $table-> string('phone_number');
+            $table->timestamps();
             
         });
             
@@ -36,6 +37,6 @@ class AdminUser extends Migration
     public function down()
     {
         //
-        Schema::drop('admin_user');
+        Schema::drop('admin_users');
     }
 }

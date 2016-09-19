@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
+@extends('layouts.admin.master')    
+@section('title')
+    <title>Welcome to Hero</title>
+@endsection
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -14,7 +9,7 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+               
                 font-family: 'Raleway';
                 font-weight: 100;
                 height: 100vh;
@@ -68,22 +63,23 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
+                    <a href="{{ url('auth/login') }}">Login</a>
+                    <a href="{{ url('contact') }}">Contact Us</a>
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Hero
                 </div>
-
+                <div>
+                    Hero is a distributed e-voucher distribution system that helps your organisation to connect vendors with beneficiaries without the need to move cash around. It is secured, it is safe and it is easy. Use Hero today. Call us on 09031866339 or email us at everistusolumese@gmail.com 
+                </div>
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://localhost:8000/docs">Hero Documentation</a>
+                    <a href="https://localhost:8000">Hero News</a>
+                    <a href="https://github.com/bytenaija/hero/">Hero Github</a>
+                    
                 </div>
             </div>
         </div>
