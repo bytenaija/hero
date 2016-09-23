@@ -19,7 +19,7 @@ class AdminUser extends Migration
             $table-> string('Firstname');
             $table-> string('Lastname');
             $table-> string('email')->unique();
-            $table-> string('password', 60);
+            $table-> string('password', 100);
             $table-> string('phone_number');
             $table->timestamps();
             
