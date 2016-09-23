@@ -20,6 +20,9 @@ Route::get('contact', function () {
 });
 
 Route::post('contact', ['as' => 'contact.post', 'uses'=> 'ContactController@postContact']);
+Route::get('contact/view', ['as' => 'contact.view', 'uses'=> 'ContactController@viewContact']);
+
+Route::get('contact/view/{id}', ['as' => 'contact.show', 'uses'=> 'ContactController@show']);
 
 Route::resource('admin', 'AdminController', ['names' => ['create' => 'admin.register'], 'parameters' => [
     'admin' => 'admin_user'

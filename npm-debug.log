@@ -1,0 +1,61 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'express-generator',
+1 verbose cli   '-g' ]
+2 info using npm@2.15.9
+3 info using node@v4.5.0
+4 verbose install initial load of C:\Users\EVA\AppData\Roaming\npm\package.json
+5 verbose readDependencies loading dependencies from C:\Users\EVA\AppData\Roaming\npm\package.json
+6 silly cache add args [ 'express-generator', null ]
+7 verbose cache add spec express-generator
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'express-generator',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'express-generator',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: 'latest',
+8 silly cache add   type: 'tag' }
+9 silly addNamed express-generator@latest
+10 verbose addNamed "latest" is being treated as a dist-tag for express-generator
+11 info addNameTag [ 'express-generator', 'latest' ]
+12 silly mapToRegistry name express-generator
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry data Result {
+15 silly mapToRegistry   raw: 'express-generator',
+15 silly mapToRegistry   scope: null,
+15 silly mapToRegistry   name: 'express-generator',
+15 silly mapToRegistry   rawSpec: '',
+15 silly mapToRegistry   spec: 'latest',
+15 silly mapToRegistry   type: 'tag' }
+16 silly mapToRegistry uri https://registry.npmjs.org/express-generator
+17 verbose addNameTag registry:https://registry.npmjs.org/express-generator not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/express-generator
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 6:21:52 PM
+21 verbose request id 1ba39c6fd890a912
+22 http request GET https://registry.npmjs.org/express-generator
+23 info retry will retry, error on last attempt: Error: getaddrinfo ENOENT registry.npmjs.org:443
+24 info attempt registry request try #2 at 6:22:03 PM
+25 http request GET https://registry.npmjs.org/express-generator
+26 info retry will retry, error on last attempt: Error: getaddrinfo ENOENT registry.npmjs.org:443
+27 info attempt registry request try #3 at 6:23:03 PM
+28 http request GET https://registry.npmjs.org/express-generator
+29 verbose stack Error: getaddrinfo ENOENT registry.npmjs.org:443
+29 verbose stack     at Object.exports._errnoException (util.js:907:11)
+29 verbose stack     at errnoException (dns.js:32:15)
+29 verbose stack     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:78:26)
+30 verbose cwd c:\Laravel\Hero
+31 error Windows_NT 10.0.10586
+32 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "express-generator" "-g"
+33 error node v4.5.0
+34 error npm  v2.15.9
+35 error code ENOENT
+36 error errno ENOENT
+37 error syscall getaddrinfo
+38 error enoent getaddrinfo ENOENT registry.npmjs.org:443
+38 error enoent This is most likely not a problem with npm itself
+38 error enoent and is related to npm not being able to find a file.
+39 verbose exit [ 1, true ]

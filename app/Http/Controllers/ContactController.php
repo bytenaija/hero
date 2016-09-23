@@ -17,4 +17,15 @@ class ContactController extends Controller
      return view('contactsuccess')->with('name', $name);          
     }
     
+    public function viewContact(){
+        $contacts = new Contact();
+        return view('admin.contactsview')->with('contacts', $contacts->latest()->get());
+    }
+    
+    public function show($id){
+         $contact =  Contact::where('id', $id)->first();
+       
+        
+        return view('admin.contactview')->with('contact', $contact);
+    }
 }

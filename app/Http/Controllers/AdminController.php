@@ -107,7 +107,7 @@ class AdminController extends Controller
         $admin->Lastname = Request::get('Lastname');
         $admin->email = Request::get('email');
         $admin->phone_number = Request::get('phone_number');
-        $admin->password = Request::get('password');
+        $admin->password = Hash::Make(Request::get('password'));
         $admin->update();
         
          return redirect('admin');
