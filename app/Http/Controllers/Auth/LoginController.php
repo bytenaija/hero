@@ -39,41 +39,41 @@ use AuthenticatesUsers;
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function getLogin() {
-        return view('login.login');
-    }
-
-    public function postLogin(LoginRequest $request) {
-        $type = Request::get('type');
-        $user = '';
-       // $use = '';
-        if ($type == 'admin') {
-            $user = new AdminUser;
-           
-        } else if ($type == 'client') {
-            
-        } else {
-            
-        }
-        $login = $user::where('email', Request::get('email'));
-        
-     if($login->first() != null){
-                
-            
-        if ($login->first()->password == Request::get('password')){
-            
-            return redirect(Request::get('type')."/");
-        }else{
-            
-            return "Not logged in";
-        }
-            } else{
-                
-                return "Error, user name";
-            }
-    
-            
-//        return Request::get('type') . $use ;
-    }
+//    public function getLogin() {
+//        return view('login.login');
+//    }
+//
+//    public function postLogin(LoginRequest $request) {
+//        $type = Request::get('type');
+//        $user = '';
+//       // $use = '';
+//        if ($type == 'admin') {
+//            $user = new AdminUser;
+//           
+//        } else if ($type == 'client') {
+//            
+//        } else {
+//            
+//        }
+//        $login = $user::where('email', Request::get('email'));
+//        
+//     if($login->first() != null){
+//                
+//            
+//        if ($login->first()->password == Request::get('password')){
+//            
+//            return redirect(Request::get('type')."/");
+//        }else{
+//            
+//            return "Not logged in";
+//        }
+//            } else{
+//                
+//                return "Error, user name";
+//            }
+//    
+//            
+////        return Request::get('type') . $use ;
+//    }
 
 }
