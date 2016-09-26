@@ -15,11 +15,31 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'firstname', 'user_type', 'email', 'password'
+        'firstname', 'lastname', 'phone_number','user_type', 'email', 'password'
     ];
  public function profile(){
-     return $this->hasOne("Profile", "user_id");
+     return $this->hasOne("Profile");
  }
+ 
+ public function log(){
+     return $this->hasMany("Log");
+ }
+ 
+// public function organisation(){
+//     $user_type = $this->user_type;
+//     if($user_type == 'Organisation'){
+//         return $this->belongsTo("Organisation", $this->profile()->org_id);
+//     } else if($user_type == 'Vendor'){
+//         return $this->belongsTo("Organisation", $this->profile()->org_id);
+//     } else if($user_type == 'Client'){
+//         return $this->belongsTo("Organisation", $this->profile()->org_id);
+//     } else {
+//         return $this->belongsTo("Administration");
+//     }
+     
+// }
+ 
+ 
 
  /**
      * The attributes that should be hidden for arrays.

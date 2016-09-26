@@ -16,6 +16,7 @@ class Beneficiaries extends Migration
         Schema::create('Beneficiaries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('beneficiary_id');
+            $table->string('organisation_id');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('sex');
@@ -23,6 +24,7 @@ class Beneficiaries extends Migration
             $table->string('lga');
             $table->string('state');
             $table->string('country');
+            $table->string('photo');
             $table->timestamps();
         });
     }

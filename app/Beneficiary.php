@@ -17,4 +17,8 @@ class Beneficiary extends Model
     public function transaction(){
         return $this->hasMany("Transaction");
     }
+    
+    public function profle(){
+        return $this->hasOne("Profile");
+    }
 }

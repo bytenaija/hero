@@ -15,11 +15,13 @@ class Vouchers extends Migration
     {
         Schema::create('Vouchers', function (Blueprint $table) {
             $table->increments('id');
-            $table->biginteger('pin')->unique();
-            $table->string('serial_no')->unique();
-            $table->float('initial_value');
-            $table->float('current_value');
-            $table->integer('assigned_to')->null();
+            $table->biginteger('voucher_id')->unsigned();
+            $table->integer('assigned_to', null)->unsigned();
+            $table->biginteger('pin')->unsigned();
+            $table->float('initial_value')->unsigned();
+            $table->float('current_value')->unsigned();
+            $table->string('serial');
+         //   $table->foreign('assigned_to')->references('beneficiary')->on('beneficiary_id')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 @section('title')
 <title>Register new administrator</title>
-@endsection()
+@endsection
 @section('content')
 <div class="section">
     <h1>

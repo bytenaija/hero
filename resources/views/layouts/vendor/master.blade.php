@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <link href="/css/app.css" rel="stylesheet">
-
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
         <!-- Scripts -->
         <script>
             window.Laravel = <?php
@@ -107,16 +107,20 @@ echo json_encode([
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        
+                                <li class="navbar-btn">
+                                    <a href="{{ Route("vendor.adduser") }}">
+                                        Add User
+                                    </a>
+                                </li>
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
+                        @if (Auth::check())
+                        
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->user_type }} <span class="caret"></span>
                             </a>
-
+                            
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ url('/logout') }}"

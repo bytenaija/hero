@@ -28,7 +28,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+   // protected $redirectTo = '';
 
     /**
      * Create a new controller instance.
@@ -37,6 +37,7 @@ use AuthenticatesUsers;
      */
     public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);
+        
     }
 
 //    public function getLogin() {
