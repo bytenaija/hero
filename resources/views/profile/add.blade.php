@@ -1,4 +1,4 @@
-@extends("layout.{{Auth::user()->user_type}}.master")
+@extends('layouts.admin.master')
 
 
 @section('content')
@@ -6,121 +6,121 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Update your profile</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <span>
+                        @if(!empty($errors))
+                        @foreach ($errors as $error)
+                        {{$error}}<br>
+                        @endforeach
+                        @endif
+                    </span>
+                    {{Auth::user()->firstname}}, {{Auth::user()->lastname}}
+                    {{Form::open(array('method'=>'POST','route' => 'profile.store', 'files' => true, 'class' => 'form-horizontal'))}}
+                   <!-- <form class="form-horizontal" role="form" method="POST" action="{{ Route('profile.store') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                            <label for="firstname" class="col-md-4 control-label">Firstname</label>
+-->
+                        <div class="form-group{{ $errors->has('organisation') ? ' has-error' : '' }}">
+                            <label for="organisation" class="col-md-4 control-label">Organisation</label>
 
                             <div class="col-md-6">
-                                <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}" required autofocus>
 
-                                @if ($errors->has('firstname'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('firstname') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
-                            <label for="lastname" class="col-md-4 control-label">Lastname</label>
 
-                            <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required>
 
-                                @if ($errors->has('lastname'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('lastname') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <Select id="org_id" class="form-control" name="org_id" value="{{ old('org_id') }}" required>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
-                            <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
-
-                            <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}" required>
-
-                                @if ($errors->has('phone_number'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phone_number') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                          <div class="form-group{{ $errors->has('user_type') ? ' has-error' : '' }}">
-                            <label for="user_type" class="col-md-4 control-label">User Type</label>
-
-                            <div class="col-md-6">
-                                
-                                <Select id="user_type" class="form-control" name="user_type" value="{{ old('user_type') }}" required>
-                                    <option value="admin">Administrator</option>
-                                    <option value="vendor">Vendor</option>
-                                    <option value="client">Client</option>
-                                    <option value="organisation">Organisation</option>
+                                    @if(!empty($orgs))
+                                    @foreach($orgs as $org)
+                                    <option value="{{$org->id}}">{{$org->name}}</option>
+                                    @endforeach
+                                    @else
+                                    <option value="99999">Hero Administration</option>
+                                    @endif
                                 </select>
-                                @if ($errors->has('phone_number'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phone_number') }}</strong>
-                                    </span>
+
+                                @if ($errors->has('org_id'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('org_id') }}</strong>
+                                </span>
+                                @endif
+
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('designation') ? ' has-error' : '' }}">
+                            <label for="designation" class="col-md-4 control-label">Designation</label>
+
+                            <div class="col-md-6">
+                                <input id="designation" type="text" class="form-control" name="designation" value="{{ old('designation') }}" required autofocus>
+
+                                @if ($errors->has('designation'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('designation') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
+                            <label for="sex" class="col-md-4 control-label">Sex</label>
+                            <div class="col-md-6">
+                                <Select id="sex" class="form-control" name="sex" value="{{ old('sex') }}" required>
+
+
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+
+                                </select>
+                                @if ($errors->has('sex'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('sex') }}</strong>
+                                </span>
+                                @endif
+
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
+                            <label for="photo" class="col-md-4 control-label">Photograph</label>
+                            <div class="col-md-6">
+                                <input type="file" name="photo" required value="{{ old('photo') }}">
+                                @if ($errors->has('photo'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('photo') }}</strong>
+                                </span>
+                                @endif
+
+                            </div>
+                        </div>
+                        <?php
+                        if (!empty($permissions)) {
+                            ?>
+                        
+                            <div class="form-group permissions col-md-10">
+                                <em>Permissions</em>
+                                <div class="col-md-8 col-md-offset-2 row">
+                                    @foreach($permissions as $permission)
+                                    <div class="form-group col-md-4">
+                                        <label for="permissions"> <input type="checkbox" name="permissions[]" value="{{$permission->id}}">{{$permission->permission_name}}</label>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Update Profile
                                 </button>
                             </div>
                         </div>
-                    </form>
+                   {{Form::close()}}
                 </div>
+                
+             
             </div>
         </div>
     </div>

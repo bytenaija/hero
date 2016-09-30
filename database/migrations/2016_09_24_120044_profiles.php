@@ -15,13 +15,12 @@ class Profiles extends Migration
     {
         Schema::create('Profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('org_id')->null;
-            $table->string('photo' )->null;
-            $table->string('designation')->null;
-            $table->string('phone_number')->null;
-            $table->string('email')->null;
-            $table->string('sex', 6)->null;
+            $table->integer('user_id')->unique();
+            $table->integer('org_id')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('designation')->nullable();
+            
+            $table->string('sex', 6)->nullable();
             $table->timestamps();
         });
     }

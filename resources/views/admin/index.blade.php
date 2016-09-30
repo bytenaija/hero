@@ -14,7 +14,7 @@ Administration
 
         <h4 class="btn btn-info btn-block" disabled>Current Administrators</h4>
         <?php
-        if (empty($admins)) {
+        if (!empty($admins)) {
             ?>
             @foreach($admins as $admin)
             <h5><a href='{{$admin->id}}' class="alert-link">{{$admin->Firstname }}, {{$admin->Lastname}}</a></h5>

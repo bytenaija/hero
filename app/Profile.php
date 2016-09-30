@@ -3,26 +3,35 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Organisation;
+use App\Client;
+use App\Vendor;
 class Profile extends Model
 {
+    protected $fillable = [
+        'user_id','photo','designation','sex','org_id'
+    ];
     public function user(){
         return $this->belongsTo("User");
     }
     
-    public function userPermission(){
-        return $this->belongsToMany("Permission")->withTimestamps();
+    public function permission(){
+        return $this->belongsToMany("App\Permission")->withTimestamps();
     }
     
-    public static function getOrganisationbyUserId(User $user){
-       $profile = Profile::where('user_id', $user->getKey())->first();
-       
-       if($profile != null){
-       return $profile->get("org_id");
-       }else{
-           return 0;
-       }
+    public function organisation(){
+        $this->belongsTo("Organisation", "org_id");
     }
+    
+    public function client(){
+        $this->belongsTo("Client", "org_id");
+    }
+    
+    public function vendor(){
+        $this->belongsTo("Vendor", "org_id");
+    }
+    
+    
     
    
 }

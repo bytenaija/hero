@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
 
 class ProfileRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ProfileRequest extends FormRequest
      */
     public function authorize()
     {
-        if(Auth::check){
+        if(Auth::check()){
             return true;
         }
         return false;
@@ -27,10 +28,11 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
+           // 'user_id' => 'required',
             'org_id' => 'required',
-            'Designation' => 'required',
-            'sex' => 'required'
+            'designation' => 'required',
+            'sex' => 'required',
+            'photo' => 'required|image'
             
         ];
     }

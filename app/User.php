@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Profile;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
         'firstname', 'lastname', 'phone_number','user_type', 'email', 'password'
     ];
  public function profile(){
-     return $this->hasOne("Profile");
+     return $this->hasOne("App\Profile");
  }
  
  public function log(){

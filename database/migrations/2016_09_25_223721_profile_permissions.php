@@ -13,7 +13,7 @@ class ProfilePermissions extends Migration
      */
     public function up()
     {
-        Schema::create('Profile_Permission', function (Blueprint $table) {
+        Schema::create('Permission_Profile', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('profile_id');
             $table->string('permission_id');
@@ -28,6 +28,6 @@ class ProfilePermissions extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('User_Permissions');
+        Schema::dropIfExists('Permission_Profile');
     }
 }

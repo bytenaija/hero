@@ -54,12 +54,17 @@ Route::resource('admin', 'AdminController', ['names' => ['create' => 'admin.regi
 ]]);
 
 Route::resource('beneficiary', 'BeneficiaryController');
+Route::resource('permission', 'PermissionController');
+
 //Route::get('admin/create', 'AdminController@create');
 //Route::post('admin/register', 'AdminController@post_register_admin');
 //Route::get('auth/login', ['as' => 'login', 'uses'=> 'Auth\LoginController@getLogin']);
 //Route::post('auth/login', 'Auth\LoginController@postLogin');
 //Route::get('auth/logout', ['as' => 'logout', 'uses'=> 'Auth\LoginController@getLogout']);
-
+Route::resource('profile', 'ProfileController');
+Route::post('profile', ['as' =>'profile.store', 'uses'=>'ProfileController@store']);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('profile/name/{userid}', ['as' =>'profile.edit.name', 'uses'=>'UserController@editName']);
+Route::post('profile/photo/{profileid}', ['as' =>'profile.edit.photo', 'uses'=>'UserController@editPhoto']);
