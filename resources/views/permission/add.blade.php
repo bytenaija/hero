@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Add Permissions</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ Route('permission.store') }}">
+                    {{Form::model(array('class'=>'form-horizontal', 'role'=>'form', 'method'=>'POST',  'route'=>'permission.store'))}}
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('user_type') ? ' has-error' : '' }}">
@@ -16,6 +16,7 @@
 
                             <div class="col-md-6">
                                 <select id="user_type" type="text" class="form-control" name="user_type" value="{{ old('user_type') }}" required autofocus>
+                                   <option value="All">All</option>
                                     <option value="admin">Administrator</option>
                                     <option value="client">Clients</option>
                                     <option value="organisation">Organisations</option>
@@ -92,7 +93,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    {{Form::close()}}
                 </div>
             </div>
         </div>

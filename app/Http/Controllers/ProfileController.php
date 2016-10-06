@@ -38,7 +38,7 @@ class ProfileController extends Controller {
      */
     public function create() {
         $orgs = array();
-        $permissions = Permission::where('user_type', Auth::user()->user_type)->get();
+        $permissions = Permission::where('user_type', Auth::user()->user_type)->where('user_type', 'All')->get();
 //         
 
         if (Auth::user()->user_type == 'client') {

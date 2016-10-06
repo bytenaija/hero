@@ -18,7 +18,7 @@ class ContactController extends Controller
     }
     
     public function viewContact(){
-        $contacts = new Contact();
+        $contacts = Contact::paginate(1);
         return view('admin.contactsview')->with('contacts', $contacts->latest()->get());
     }
     

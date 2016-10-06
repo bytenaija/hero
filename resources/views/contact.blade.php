@@ -6,7 +6,7 @@
 @section('content')
     <div class="col-md-6">
         <h3>Please send us a message using the form below and we will get back to you as soon as possible</h3>
-            {!! Form::open(['url' => 'contact']) !!}
+            {!! Form::model('Contact',['url' => 'contact']) !!}
             @include('errors.formerrors')
                 <div class="form-group">
                     {!! Form::label('name', 'Name');!!}

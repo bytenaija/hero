@@ -1,6 +1,7 @@
 @extends('layouts.admin.master')
 @section('title')
-Administration
+
+Profile of {{$user->firstname}}  {{$user->lastname}}
 @endsection
 <meta name="_token" content="{!! csrf_token() !!}"/>
 <script src="/js/jquery.min.js" type="text/javascript"></script>
@@ -23,36 +24,7 @@ Administration
              $('#photo-change').show('fast');
             
         });
-//        $("#updatePhoto").bind('click', function (event) {
-//            var urls = "{{Route('profile.edit.photo', $user->profile->id)}}";
-//     //   var url = "profile/photo/{{$user->profile->id}}";
-//        alert(urls);
-//            event.preventDefault();
-//            
-//            
-//            
-//            $('#photo-div').hide('fast');
-//      //     var image = $('input[name="photo"]').val();
-//           
-//           
-//           $.ajax({
-//      url: urls,
-//      type: "post",
-//      data: {'image':$('input[name="photo"]').val()},
-//      dataType: "text",
-//      success: function(data){
-//        alert(data);
-//      }
-//    });      
-//              $.post(url, {image} ,function(data){
-//                   alert(data);
-//                   $("#photo").attr('src', "profiles/"+data);
-//                    $('#photo-change').show(3000);
-//               }, "text");
-                
-            
-//        });
-        
+//        
     });
 
 </script>
@@ -62,7 +34,9 @@ Administration
     <h4 class="panel-heading text-center">
         User Profile
     </h4>
+    
     <div class="panel-body row">
+        @if(!empty($user->profile))
         <div class="navbar-left col-md-8"> 
             <div class="rounded col-md-12">
                 <div style="display: block">
@@ -99,12 +73,8 @@ Administration
                
             <div><span class="clearfix">&nbsp;</span></div></h4> 
             </div>
-            
-            </div>
-            
-            
-          <div class="rounded col-md-12">
-              Permissions;
+            <div class="col-md-12" style="border-top: 3px solid black; border-radius: 10px;">
+                <h1>Permissions:</h1>
               <ol>
               @foreach($user->profile->permission as $permission)
               
@@ -128,9 +98,13 @@ Administration
             
             </div>
             
+            </div>
+            
+            
+            
         </div>
     
-        <div class="navbar-right col-md-4"> <div id="photo-change"><img src="/profiles/{{$user->profile->photo}}" class="img-rounded" id='photo'/>
+        <div class="navbar-right col-md-4"> <div id="photo-change"><img src="/profiles/{{$user->profile->photo}}" class="img-responsive img-rounded" id='photo'/>
            <a href="#" ><div class="btn btn-primary btn-edit"><span id='photo-link' class="glyphicon glyphicon-pencil"></div></span></a></h4>
             <div><span class="clearfix">&nbsp;</span></div>
             </div>
@@ -169,7 +143,9 @@ Administration
         
         </div>
         
-           
+           @else
+           <h3 style="color: red">This user currently do not have a profile. Before you can do anyother thing, you need to create a profile. Kindly click this button to create one<a href="{{Route('profile.create')}}" class="btn btn-primary btn-block col-md-6">Create Profile</a></h3>
+    @endif
     </div>
 </div>
     
